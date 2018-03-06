@@ -63,7 +63,7 @@ overflow-x: hidden;
 
 
 .buttons {
-  margin: 0px 0 0 3px;
+  margin: 0.5px 0 0 3px;
   height: 100px;
   width: 300px;
   background-color: rgba(202, 28, 28, 1);
@@ -182,7 +182,7 @@ overflow-x: hidden;
   overflow-y: auto;
 }
 
-/*
+
 .recContainer{
 background-color: gainsboro;
 margin: 394px 0 0 282px;
@@ -206,7 +206,7 @@ position: fixed;
 }
 
 #record:active{ transform: translateY(3px);} 
-*/
+
 
 
 /* Full Credit To Joel T Bennett For This Code: https://codepen.io/JTBennett/ */

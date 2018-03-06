@@ -439,7 +439,7 @@ class Pokemon extends React.Component {
       }
     }else{
       voice.setRate(0.9,1)
-      voice.speak("i'm sorry that wasn't a valid command,  try a command like pokedex search for,  to search for a pokemon or,  pokedex capture to capture a pokemon");
+      voice.speak("i'm sorry that wasn't a valid command,  try a command like pokedex search for,  to search for a pokemon, or,  pokedex capture,  to capture a pokemon");
       this.setState({
         recorded: false
       });

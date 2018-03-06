@@ -41,7 +41,7 @@ class Pokemon extends React.Component {
       display_Inventory: "",
       value: "",
       recorded: false,
-      introduced: false,
+      introduced: false
     };
   }
 
@@ -378,8 +378,6 @@ class Pokemon extends React.Component {
         });
       }
     }
-
-    
   };
 
   handleSpeechRec = () => {
@@ -399,12 +397,7 @@ class Pokemon extends React.Component {
 
   handleCommands = () => {
     var voice = new p5.Speech();
-    const {
-      userSpeech,
-      recorded,
-      pokeFound,
-      pokeball
-    } = this.state;
+    const { userSpeech, recorded, pokeball } = this.state;
     voice.setPitch(1.4);
 
     const speechValue = userSpeech
@@ -435,31 +428,31 @@ class Pokemon extends React.Component {
         });
         voice.speak(`${speechValue} has been captured`);
       }
-    }else{
-      voice.setRate(0.9,1)
-      voice.speak("i'm sorry that wasn't a valid command,  try a command like pokedex search for,  to search for a pokemon, or,  pokedex capture,  to capture a pokemon");
+    } else {
+      voice.setRate(0.9, 1);
+      voice.speak(
+        "i'm sorry that wasn't a valid command,  try a command like pokedex search for,  to search for a pokemon, or,  pokedex capture,  to capture a pokemon"
+      );
       this.setState({
         recorded: false
       });
     }
-    
   };
 
   instruction = () => {
-    const {buttonClicked} = this.state
     var voice = new p5.Speech();
-      voice.setRate(0.8,1)
-      voice.speak("welcome to kelvin's pokedex project, here you can click on a pokemon's name to display pokemon, you can use the buttons on your right to view more information about the pokemon. you can also use the red button with the microphone to use voice commands, to either search for a pokemon, or to capture a pokemon")
+    voice.setRate(0.8, 1);
+    voice.speak(
+      "welcome to kelvin's pokedex project, here you can click on a pokemon's name to display pokemon, you can use the buttons on your right to view more information about the pokemon. you can also use the red button with the microphone to use voice commands, to either search for a pokemon, or to capture a pokemon"
+    );
 
-      this.setState({
-        introduced: true
-      })
-
-  }
+    this.setState({
+      introduced: true
+    });
+  };
 
   render() {
     const {
-      userSpeech,
       displayInfo,
       buttonClicked,
       displayHelp,
@@ -484,10 +477,10 @@ class Pokemon extends React.Component {
     ) : (
       <div>{this.state.name}</div>
     );
-    if(!introduced){
-      this.instruction()
+    if (!introduced) {
+      this.instruction();
     }
-   
+
     if (recorded) {
       this.handleCommands();
     }
@@ -500,7 +493,13 @@ class Pokemon extends React.Component {
           width="900px"
           alt=""
         />
-        <div id="container">{name.length?displayPokemon:<div id="pic_container">{Loading()}</div>}</div>
+        <div id="container">
+          {name.length ? (
+            displayPokemon
+          ) : (
+            <div id="pic_container">{Loading()}</div>
+          )}
+        </div>
         {activateVoice ? this.handleSpeech() : ""}
         <div>
           <div className="info">

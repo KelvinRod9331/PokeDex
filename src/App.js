@@ -40,7 +40,8 @@ class Pokemon extends React.Component {
       displayHelp: "",
       display_Inventory: "",
       value: "",
-      recorded: false
+      recorded: false,
+      introduced: false,
     };
   }
 
@@ -378,7 +379,7 @@ class Pokemon extends React.Component {
       }
     }
 
-    console.log(e.target.name, this.state.pokeball);
+    
   };
 
   handleSpeechRec = () => {
@@ -406,7 +407,7 @@ class Pokemon extends React.Component {
     } = this.state;
     voice.setPitch(1.4);
 
-    const searchObj = userSpeech
+    const speechValue = userSpeech
       .split(" ")
       .slice(-1)
       .join("");
@@ -415,27 +416,24 @@ class Pokemon extends React.Component {
       .slice(0, -1)
       .join(" ");
 
-      console.log(command)
-
     if (recorded && command === "Pokedex search for") {
-      voice.speak(`Searching for ${searchObj}`);
-      this.getPokemon(searchObj);
+      voice.speak(`Searching for ${speechValue}`);
+      this.getPokemon(speechValue);
       this.setState({
         recorded: false
       });
-      console.log("Pokemon Found", pokeFound)
     } else if (command === "Pokedex capture") {
-      if (pokeball.includes(searchObj.toUpperCase())) {
-        voice.speak(`${searchObj} is already captured check inventory`);
+      if (pokeball.includes(speechValue.toUpperCase())) {
+        voice.speak(`${speechValue} is already captured check inventory`);
         this.setState({
           recorded: false
         });
       } else {
         this.setState({
-          pokeball: [...pokeball, searchObj.toUpperCase()],
+          pokeball: [...pokeball, speechValue.toUpperCase()],
           recorded: false
         });
-        voice.speak(`${searchObj} has been captured`);
+        voice.speak(`${speechValue} has been captured`);
       }
     }else{
       voice.setRate(0.9,1)
@@ -447,6 +445,18 @@ class Pokemon extends React.Component {
     
   };
 
+  instruction = () => {
+    const {buttonClicked} = this.state
+    var voice = new p5.Speech();
+      voice.setRate(0.8,1)
+      voice.speak("welcome to kelvin's pokedex project, here you can click on a pokemon's name to display pokemon, you can use the buttons on your right to view more information about the pokemon. you can also use the red button with the microphone to use voice commands, to either search for a pokemon, or to capture a pokemon")
+
+      this.setState({
+        introduced: true
+      })
+
+  }
+
   render() {
     const {
       userSpeech,
@@ -457,13 +467,14 @@ class Pokemon extends React.Component {
       value,
       recorded,
       activateVoice,
-      name
+      name,
+      introduced
     } = this.state;
 
     const displayPokemon = this.state.pokeFound ? (
       <div id="pokemon_container">
         <div id="pic_container">
-          {this.state.picture && name.length ? (
+          {this.state.picture ? (
             <img id="pokePic" src={this.state.picture} width={"200px"} alt="" />
           ) : (
             Loading()
@@ -473,12 +484,14 @@ class Pokemon extends React.Component {
     ) : (
       <div>{this.state.name}</div>
     );
-
+    if(!introduced){
+      this.instruction()
+    }
+   
     if (recorded) {
       this.handleCommands();
     }
 
-    console.log("Speech:", userSpeech);
     return (
       <div id="body">
         <img
@@ -487,7 +500,7 @@ class Pokemon extends React.Component {
           width="900px"
           alt=""
         />
-        <div id="container">{displayPokemon}</div>
+        <div id="container">{name.length?displayPokemon:<div id="pic_container">{Loading()}</div>}</div>
         {activateVoice ? this.handleSpeech() : ""}
         <div>
           <div className="info">
@@ -513,7 +526,7 @@ class Pokemon extends React.Component {
         </div>
         <div className="backBtn">
           <button id="backBtn" onClick={this.handleBackButton}>
-            Back
+            BACK
           </button>
         </div>
         <div className="recContainer">

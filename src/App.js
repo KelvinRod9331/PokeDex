@@ -70,8 +70,15 @@ class Pokemon extends React.Component {
   };
 
   getPokemon = name => {
+    var target
+    if(typeof name === 'string' ){
+       target = name.toLowerCase()
+    }else{
+       target = name
+    }
+    
     if (name) {
-      PokemonAPI.getPokemonInfo(name.toLowerCase()).then(response => {
+      PokemonAPI.getPokemonInfo(target).then(response => {
         let id = response.data.id;
         this.setState({
           id: id

@@ -9,7 +9,7 @@ Download or install this application now and dwell in nostalgia.
 ![fig 1. Poke'dex Gif](/ReadMeImg/pokedex.gif)
 
 # Background
-During my time in school I was given a simple task, to utilize the [Pokemon API](https://pokeapi.co/) to display a flavor text of just five pokemon, but I felt it was too easy. The Pokeapi has over 800+ pokemon to use from and it had so much valuable information that I thought to my self, why not recreate the Poke'dex and make it fun for anyone who wants to use it, thus my Poke'dex project was born.
+During my time in school I was given a simple task, to utilize the [Pokemon API](https://pokeapi.co/) to display a flavor text of just five pokemon, but I felt it was too easy. The Pokeapi has over 800+ pokemon to use from and it had so much valuable information that I felt that wasn't challenging enough. So I thought to my self, why not recreate the Poke'dex and make it fun for anyone who wants to use it, thus my Poke'dex project was born.
 
 # Features
 

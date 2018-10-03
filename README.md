@@ -4,14 +4,14 @@ Pokemon series. Now you can feel like a Pokemon trainer by using the Poke'dex we
 You can retrieve information from a wide array of over 800+ Pokemon and even give the Poke'dex voice commands! 
 Download or install this application now and dwell in nostalgia.
 
-###Example
+### Example
 
 ![fig 1. Poke'dex Gif](/ReadMeImg/pokedex.gif)
 
-#Background
+# Background
 During my time in school I was given a simple task, to utilize the [Pokemon API](https://pokeapi.co/) to display a flavor text of just five pokemon, but I felt it was too easy. The Pokeapi has over 800+ pokemon to use from and it had so much valuable information that I thought to my self, why not recreate the Poke'dex and make it fun for anyone who wants to use it, thus my Poke'dex project was born.
 
-#Features
+# Features
 
 You can:
 * Click on any pokemon from the list provided.
@@ -37,7 +37,7 @@ You can:
 - [Joel T Bennett](https://codepen.io/JTBennett/) `For the Loading Screen`
 
 # Tech Used
-This app was built using
+This app was built using:
 * Javascript
 * React
 * CSS3

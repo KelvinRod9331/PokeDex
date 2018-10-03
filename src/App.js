@@ -163,6 +163,25 @@ class Pokemon extends React.Component {
     });
   };
 
+  handleCancelButton = () => {
+    this.setState({
+      pokeFound: false,
+      pokemon: "",
+      move: "",
+      picture: "",
+      height: "",
+      weight: "",
+      types: "",
+      habitat: "",
+      PokeChain: "",
+      description: "",
+      buttonClicked: false,
+      recorded: false,
+      introduced: true,
+      activateVoice: false
+    }, this.instruction(false));
+  }
+
   handleNextPrev = e => {
     const button = e.target.name;
     let { id } = this.state;
@@ -446,12 +465,16 @@ class Pokemon extends React.Component {
     }
   };
 
-  instruction = () => {
+  instruction = (start) => {
     var voice = new p5.Speech();
-    voice.setRate(0.8, 1);
-    voice.speak(
-      "welcome to kelvin's pokedex project, here you can click on a pokemon's name to display pokemon, you can use the buttons on your right to view more information about the pokemon. you can also use the red button with the microphone to use voice commands, to either search for a pokemon, or to capture a pokemon"
-    );
+    if(start){
+      voice.setRate(0.8, 1);
+      voice.speak(
+        "welcome to kelvin's pokedex project, here you can click on a pokemon's name to display pokemon, you can use the buttons on your right to view more information about the pokemon. you can also use the red button with the microphone to use voice commands, to either search for a pokemon, or to capture a pokemon"
+      );
+    }else{
+      voice.cancel()
+    }
 
     this.setState({
       introduced: true
@@ -485,7 +508,7 @@ class Pokemon extends React.Component {
       <div>{this.state.name}</div>
     );
     if (!introduced) {
-      this.instruction();
+      this.instruction(true);
     }
 
     if (recorded) {
@@ -529,6 +552,11 @@ class Pokemon extends React.Component {
             handleInfo={this.handleInfoBtns}
             handleNextPrev={this.handleNextPrev}
           />
+        </div>
+        <div className="cancelBtn">
+          <button id="cancelBtn" onClick={this.handleCancelButton}>
+            CANCEL
+          </button>
         </div>
         <div className="backBtn">
           <button id="backBtn" onClick={this.handleBackButton}>

@@ -1,6 +1,7 @@
 body{
 overflow-y: hidden;
 overflow-x: hidden;
+background-color: #F0F2F5
 }
 
 
@@ -94,6 +95,26 @@ overflow-x: hidden;
   transform: translateY(4px);
 }
 
+.cancelBtn{
+  width: 75px;
+  height: 20px;
+  margin: 467.5px 0 0 300px;
+  position: fixed;
+  background-color: rgba(202, 28, 28, 1);
+}
+
+#cancelBtn{
+  border: 2px solid black;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  color: #fff;
+  width: 70px;
+  background-color: red;
+  border-radius: 6px;
+  box-shadow: 0 9px rgba(202, 28, 28, 1);
+}
+
 .backBtn {
   width: 75px;
   height: 20px;
@@ -115,12 +136,18 @@ overflow-x: hidden;
   box-shadow: 0 9px rgba(202, 28, 28, 1);
 }
 
-
+#cancelBtn:active{
+  background-color: red;
+  box-shadow: 0 5px rgba(202, 28, 28, 1);
+  transform: translateY(4px);
+}
 #backBtn:active {
   background-color: #083870;
   box-shadow: 0 5px rgba(202, 28, 28, 1);
   transform: translateY(4px);
 }
+
+
 
 
 #Next_Prev {
